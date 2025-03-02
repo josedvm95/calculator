@@ -1,0 +1,197 @@
+<Button>
+    on_release: root.parent.parent.parent.button_release(self.text)
+    font_size: 32
+    font_name: "SegUIVar"
+    color: (27/255, 27/255, 27/255, 1)
+
+<RoundedButton@HoverRoundedButton>
+	background_color: (0,0,0,0)
+	background_normal: ''
+	on_press: root.on_press()
+	canvas.before:
+		Color:
+			rgba: self.init_color if self.state=="normal" else self.press_color
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+			radius: [12]
+	canvas:
+        Color:
+            rgba: (203/255, 205/255, 204/255, 1)
+        Line:
+            width: 1
+            rounded_rectangle: self.x, self.y, self.width, self.height, 12
+
+<MyLayout>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+
+        TextInput:
+            id: calc_input
+            multiline: False
+            text: "0"
+            halign: "right"
+            font_size: 70
+            font_name: "segoeuib"
+            size_hint: (1, 0.25)
+            background_normal: ''
+            background_color: (242/255, 244/255, 243/255, 1)
+            cursor_blink: False
+            cursor_color: (0,0,1,1)
+#            cursor_color: self.background_color
+#            on_touch_down: no he conseguido mover el cursor al final
+
+        DisableRightClickLayout:
+            cols: 4
+            rows: 5
+            padding: 10
+            spacing: 5
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "%"
+                hover_color: (244/255, 247/255, 247/255, 1)
+                init_color: (248/255, 249/255, 249/255, 1)
+                press_color: (243/255, 245/255, 245/255, 1)
+            RoundedButton:
+                id: clear
+                size_hint: (.2, .2)
+                text: "C"
+                on_release: root.clear()
+                hover_color: (244/255, 247/255, 247/255, 1)
+                init_color: (248/255, 249/255, 249/255, 1)
+                press_color: (243/255, 245/255, 245/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: ""  # ⌫
+                font_name: "SegoeIcons"  # SegUISym
+                on_release: root.remove()
+                hover_color: (244/255, 247/255, 247/255, 1)
+                init_color: (248/255, 249/255, 249/255, 1)
+                press_color: (243/255, 245/255, 245/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: ""  # /
+                font_name: "SegoeIcons"
+                font_size: 25
+                hover_color: (244/255, 247/255, 247/255, 1)
+                init_color: (248/255, 249/255, 249/255, 1)
+                press_color: (243/255, 245/255, 245/255, 1)
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "7"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "8"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "9"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: ""  # x
+                font_name: "SegoeIcons"
+                font_size: 25
+                hover_color: (244/255, 247/255, 247/255, 1)
+                init_color: (248/255, 249/255, 249/255, 1)
+                press_color: (243/255, 245/255, 245/255, 1)
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "4"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "5"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "6"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: ""  # -
+                font_name: "SegoeIcons"
+                font_size: 25
+                hover_color: (244/255, 247/255, 247/255, 1)
+                init_color: (248/255, 249/255, 249/255, 1)
+                press_color: (243/255, 245/255, 245/255, 1)
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "1"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "2"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "3"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: ""  # +
+                font_name: "SegoeIcons"
+                font_size: 25
+                hover_color: (244/255, 247/255, 247/255, 1)
+                init_color: (248/255, 249/255, 249/255, 1)
+                press_color: (243/255, 245/255, 245/255, 1)
+
+            # Row
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "\u207A/\u208B"  # +/-
+                on_release: root.negate()
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "0"
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: "."
+                on_release: root.dot()
+                hover_color: (252/255, 252/255, 252/255, 1)
+                init_color: (1, 1, 1, 1)
+                press_color: (247/255, 250/255, 249/255, 1)
+            RoundedButton:
+                size_hint: (.2, .2)
+                text: ""  # =
+                font_name: "SegoeIcons"
+                font_size: 25
+                color: (1,1,1,1)
+                on_release: root.equals()
+                hover_color: (24/255, 117/255, 197/255, 1)
+                init_color: (0/255, 103/255, 192/255, 1)
+                press_color: (48/255, 131/255, 202/255, 1)
